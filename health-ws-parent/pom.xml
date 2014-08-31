@@ -10,85 +10,54 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>health-ws-model</module>
+        <module>health-ws-lib</module>
+        <module>health-ws-api</module>
+        <module>health-ws</module>
     </modules>
 
     <properties>
-        <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
-        <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
+        <javax.annotation.version>1.0</javax.annotation.version>
+        <javax.persistence.version>1.0</javax.persistence.version>
+        <hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
+        <hibernate-entitymanager.version>3.4.0.GA</hibernate-entitymanager.version>
+        <hibernate-core.version>3.3.1.GA</hibernate-core.version>
+        <maven-compiler-plugin.version>2.0.2</maven-compiler-plugin.version>
+        <jdk.version>1.6</jdk.version>
+        <cxf.version>2.4.1</cxf.version>
+        <springframework.version>3.1.1.RELEASE</springframework.version>
+        <projectVersion>1.0-SNAPSHOT</projectVersion>
+        <cxf.version>2.4.1</cxf.version>
+        <cxf-lib.version>2.4.8</cxf-lib.version>
     </properties>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- Maven Compiler -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <dependencies>
-
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
+            <artifactId>org.springframework.beans</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>4.2.2.Final</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.2.2.Final</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>4.0.2.GA</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-            <scope>compile</scope>
-        </dependency>
-
-
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.9</version>
+            <artifactId>org.springframework.context</artifactId>
+            <version>${springframework.version}</version>
         </dependency>
 
     </dependencies>

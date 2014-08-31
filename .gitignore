@@ -9,4 +9,9 @@ JaxWS/target
 .idea/
 
 Health-ws-parent/target
+Health-ws-parent/heath-ws-api/target
+Health-ws-parent/heath-ws-model/target
+Health-ws-parent/heath-ws/target
+Health-ws-parent/heath-ws-lib/target
+health-ws-parent/health-ws-api/target/
 Health-web-parent/target

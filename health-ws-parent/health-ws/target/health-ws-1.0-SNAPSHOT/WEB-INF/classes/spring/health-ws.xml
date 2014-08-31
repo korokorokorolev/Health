@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="
+        http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <cxf:bus id="health-bus" bus="cxf"/>
+
+
+     <bean id="mbeanServer" class="org.jboss.mx.util.MBeanServerLocator" factory-method="locateJBoss"/>
+
+    <bean id="org.apache.cxf.management.InstrumentationManager"
+          class="org.apache.cxf.management.jmx.InstrumentationManagerImpl">
+        <property name="enabled" value="true"/>
+        <property name="bus" ref="cxf"/>
+        <property name="server" ref="mbeanServer"/>
+        <property name="usePlatformMBeanServer" value="true"/>
+        <property name="createMBServerConnectorFactory" value="false"/>
+    </bean>
+
+     <bean id="CounterRepository" class="org.apache.cxf.management.counters.CounterRepository">
+        <property name="bus" ref="cxf" />
+    </bean>
+
+
+  <jaxws:endpoint id="HealthService"
+                  xmlns:hs="http://akorolev.health.ru/health/ws/query"
+                  address="/HealthService"
+                  serviceName="hs:HealthService"
+                  publishedEndpointUrl="http://${application.soap.host_port}/ws/HealthService"
+                  wsdlLocation="META-INF/wsdl/HealthService.wsdl">
+      <jaxws:implementor>
+          <ref bean="HealthService"/>
+      </jaxws:implementor>
+      <jaxws:properties>
+          <entry key="mtom-enabled" value="false"/>
+      </jaxws:properties>
+  </jaxws:endpoint>
+
+</beans>

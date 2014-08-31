@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxws:bindings wsdlLocation="META-INF/wsdl/HealthService.wsdl"
+                xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+                xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <jaxws:bindings
+            node="wsdl:definitions/wsdl:types/xsd:schema[@targetNamespace='http://akorolev.health.ru/health/ws/query']">
+        <jxb:globalBindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <jxb:serializable />
+        </jxb:globalBindings>
+    </jaxws:bindings>
+</jaxws:bindings>
