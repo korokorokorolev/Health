@@ -1,0 +1,12 @@
+*.class
+/build
+/target
+JaxWS/target
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
+
+Health-ws-parent/target
+Health-web-parent/target
